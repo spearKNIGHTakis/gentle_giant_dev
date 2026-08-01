@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gentle_Giant Developer &amp; Penetration Tester</title>
+<meta name="description" content="Portfolio of a full-stack developer and ethical hacker building and securing SaaS products.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0d0d0d;
+    --surface: #161616;
+    --border: #2a2a2a;
+    --text: #f5f5f5;
+    --muted: #9a9a9a;
+    --sans: 'Inter', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.6;
+  }
+  a{color:inherit; text-decoration:none;}
+  ::selection{background:var(--text); color:var(--bg);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--text); outline-offset:3px;}
+
+  .wrap{max-width:1000px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- HEADER ---------- */
+  header.top{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:28px 0; border-bottom:1px solid var(--border);
+  }
+  .mark{
+    display:grid; grid-template-columns:repeat(2,16px); grid-template-rows:repeat(3,10px);
+    gap:3px;
+  }
+  .mark span{border:1.4px solid var(--text); border-radius:3px;}
+  .icon-row{display:flex; gap:12px;}
+  .icon-btn{
+    width:38px; height:38px; border:1px solid var(--border); border-radius:50%;
+    display:flex; align-items:center; justify-content:center; color:var(--muted);
+  }
+  .icon-btn:hover{border-color:var(--text); color:var(--text);}
+  .icon-btn svg{width:17px; height:17px;}
+
+  .nav-toggle{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:72px 0 88px;}
+  .greeting{font-size:1.15rem; color:var(--muted); margin-bottom:6px;}
+  .greeting strong{color:var(--text); font-weight:700;}
+  .handle{
+    display:flex; align-items:center; gap:8px; color:var(--muted);
+    font-size:1.05rem; margin-bottom:36px;
+  }
+  .handle svg{width:16px; height:16px;}
+  .hero h1{
+    font-size:clamp(2.2rem, 6vw, 3.6rem);
+    font-weight:800; letter-spacing:-0.02em; line-height:1.12;
+    margin-bottom:32px;
+  }
+  .hero .desc{max-width:620px; color:var(--muted); font-size:1.05rem;}
+
+  /* ---------- SECTION SHARED ---------- */
+  section{padding:72px 0; border-bottom:1px solid var(--border);}
+  .section-label{
+    font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em;
+    color:var(--muted); margin-bottom:14px;
+  }
+  .section-title{font-size:clamp(1.4rem,3.4vw,2rem); font-weight:700; margin-bottom:32px;}
+
+  /* ---------- ABOUT ---------- */
+  .about p{color:var(--muted); max-width:680px; margin-bottom:16px;}
+  .about strong{color:var(--text); font-weight:600;}
+  .focus-row{display:flex; flex-wrap:wrap; gap:12px; margin-top:28px;}
+  .focus-item{
+    border:1px solid var(--border); border-radius:20px; padding:8px 16px; font-size:0.9rem;
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .project-list{display:flex; flex-direction:column;}
+  .project{
+    display:flex; justify-content:space-between; gap:24px; align-items:flex-start;
+    padding:26px 0; border-top:1px solid var(--border);
+  }
+  .project:first-child{border-top:none;}
+  .project-main h3{font-size:1.15rem; font-weight:600; margin-bottom:8px;}
+  .project-main p{color:var(--muted); max-width:520px; font-size:0.95rem; margin-bottom:10px;}
+  .project-main .stack{color:var(--muted); font-size:0.82rem;}
+  .project-links{display:flex; flex-direction:column; gap:6px; text-align:right; white-space:nowrap;}
+  .project-links a{font-size:0.85rem; color:var(--text); border-bottom:1px solid var(--border);}
+  .project-links a:hover{border-color:var(--text);}
+  .project-tag{
+    font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted);
+    border:1px solid var(--border); border-radius:20px; padding:3px 10px; margin-bottom:8px; display:inline-block;
+  }
+
+  @media(max-width:640px){
+    .project{flex-direction:column;}
+    .project-links{flex-direction:row; text-align:left;}
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:32px;}
+  .skill-group h4{font-size:0.85rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:14px;}
+  .chip-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{font-size:0.82rem; padding:7px 13px; border:1px solid var(--border); border-radius:20px;}
+
+  /* ---------- CONTACT ---------- */
+  .contact{border-bottom:none;}
+  .contact .section-title{margin-bottom:16px;}
+  .contact p{color:var(--muted); max-width:520px; margin-bottom:32px;}
+  .contact-email{
+    display:inline-block; font-size:1.1rem; font-weight:600; border-bottom:1.5px solid var(--text);
+    padding-bottom:2px; margin-bottom:36px;
+  }
+  .social-row{display:flex; flex-wrap:wrap; gap:12px;}
+  .social-pill{
+    display:flex; align-items:center; gap:8px; font-size:0.88rem;
+    padding:10px 18px; border:1px solid var(--border); border-radius:20px; color:var(--muted);
+  }
+  .social-pill svg{width:15px; height:15px;}
+  .social-pill:hover{border-color:var(--text); color:var(--text);}
+
+  footer{padding:32px 0; text-align:center; font-size:0.82rem; color:var(--muted);}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div class="mark" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="icon-row">
+      <a class="icon-btn" href="https://github.com/spearKNIGHTakis" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.03-.01-1.87-2.78.62-3.37-1.22-3.37-1.22-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.46.1 2.72.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>
+      </a>
+      <a class="icon-btn" href="https://linkedin.com/in/gentlegiantdev" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H3.56V20.5H6.94V8.5ZM5.25 3.5A1.94 1.94 0 1 0 5.27 7.38 1.94 1.94 0 0 0 5.25 3.5ZM20.5 20.5H17.13V14.24C17.13 12.74 16.6 11.71 15.25 11.71C14.22 11.71 13.62 12.4 13.35 13.06C13.25 13.31 13.23 13.65 13.23 14V20.5H9.85S9.9 9.34 9.85 8.5H13.23V9.95C13.68 9.26 14.48 8.28 16.58 8.28C19.19 8.28 20.5 10 20.5 13.34V20.5Z"/></svg>
+      </a>
+      <a class="icon-btn" href="https://x.com/gentle_giantdev" target="_blank" rel="noopener" aria-label="X">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3.3l-7.2 8.2L22 21h-6.6l-5.2-6.8L4.2 21H.9l7.7-8.8L1 3h6.8l4.7 6.2L17.5 3Zm-1.2 16h1.8L7.8 5H5.9l10.4 14Z"/></svg>
+      </a>
+      <a class="icon-btn" href="https://wa.me/qr/5AVKN43EVKMIK1" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.1 8.1 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.2 0-.3.1-.4l.3-.4c.1-.1.1-.2.2-.4s0-.3 0-.4-.5-1.2-.7-1.7-.4-.4-.5-.4h-.4a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.8 2 4.6 4.6 0 0 0 1 2.5 10.6 10.6 0 0 0 4.1 3.6c.6.2 1 .4 1.4.5a3.3 3.3 0 0 0 1.5.1 2.5 2.5 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c-.1-.1-.2-.2-.4-.3Z"/></svg>
+      </a>
+      <a class="icon-btn" href="https://tiktok.com/@gentle_giant_dev" target="_blank" rel="noopener" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 2h-3.1v13.4a2.9 2.9 0 1 1-2.1-2.8V9.4a6 6 0 1 0 5.2 5.9V8.1a7.6 7.6 0 0 0 4.4 1.4V6.4a4.5 4.5 0 0 1-4.4-4.4Z"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <p class="greeting">Hi! I am <strong>Iddrisu k. Sofian</strong></p>
+    <p class="handle">
+      @gentle_giant_dev
+      <svg viewBox="0 0 24 24" fill="#3897f0"><path d="m12 2 2.4 1.4 2.7-.4 1.4 2.4 2.4 1.4-.4 2.7.4 2.7-2.4 1.4-1.4 2.4-2.7-.4L12 17l-2.4 1.4-2.7-.4-1.4-2.4-2.4-1.4.4-2.7-.4-2.7 2.4-1.4L6.9 3l2.7.4L12 2Zm-1.1 12.5 5-5-1.1-1.1-3.9 3.9-1.9-1.9-1.1 1.1 3 3Z"/></svg>
+    </p>
+    <h1>Full-Stack Developer, Penetration Tester &amp; Ethical Hacker.</h1>
+    <p class="desc">I design and build full-stack web applications and SaaS products, then test them the way an attacker would — so security is part of the build, not an afterthought.</p>
+  </section>
+
+  <section class="about">
+    <p class="section-label">About</p>
+    <h2 class="section-title">How I work</h2>
+    <p>I'm a <strong>full-stack developer</strong> who also works in <strong>penetration testing and ethical hacking</strong>. That combination means I build products end to end, and I know what to look for when trying to break them.</p>
+    <div class="focus-row">
+      <span class="focus-item">Full-Stack Development</span>
+      <span class="focus-item">SaaS Products</span>
+      <span class="focus-item">Penetration Testing</span>
+      <span class="focus-item">Ethical Hacking</span>
+    </div>
+  </section>
+
+  <section id="projects">
+    <p class="section-label">Selected Work</p>
+    <h2 class="section-title">Projects</h2>
+    <div class="project-list">
+
+      <div class="project">
+        <div class="project-main">
+          <span class="project-tag">SaaS</span>
+          <h3>Edu-kate</h3>
+          <p>A full-featured school management system built with React 18 and Supabase.</p>
+          <p class="stack">React · Node.js · PostgreSQL · Vercel</p>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/spearKNIGHTakis/edu-kate">GitHub</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-main">
+          <span class="project-tag">Security</span>
+          <h3>Vulnerability Assessment — Client X</h3>
+          <p>Web app penetration test covering authentication, session handling, and input validation.</p>
+          <p class="stack">Burp Suite · OWASP Top 10 · Nmap</p>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-main">
+          <span class="project-tag">Full-Stack</span>
+          <h3>Full-Stack App Name</h3>
+          <p>A realtime multilayer quiz game using WebSockets</p>
+          <p class="stack">HTML Frontend · JavaScript Backend</p>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/spearKNIGHTakis/quiz-master-frontend">GitHub</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-main">
+          <span class="project-tag">Security</span>
+          <h3>CTF</h3>
+          <p>A capture-the-flag challenge with tryhackme.com.</p>
+          <p class="stack">Linux · Exploitation · CTF</p>
+        </div>
+        <div class="project-links">
+          <a href="https://x.com/i/status/1979891540563788032">Check it up</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="skills">
+    <p class="section-label">Toolkit</p>
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h4>Development</h4>
+        <div class="chip-row">
+          <span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">React</span>
+          <span class="chip">Node.js</span><span class="chip">Python</span><span class="chip">HTML/CSS</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Security</h4>
+        <div class="chip-row">
+          <span class="chip">Burp Suite</span><span class="chip">Nmap</span><span class="chip">Metasploit</span>
+          <span class="chip">OWASP Top 10</span><span class="chip">Wireshark</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Infrastructure</h4>
+        <div class="chip-row">
+          <span class="chip">Vercel</span><span class="chip">Docker</span><span class="chip">PostgreSQL</span>
+          <span class="chip">Supabase</span><span class="chip">Linux</span><span class="chip">Firebase</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <p class="section-label">Get In Touch</p>
+    <h2 class="section-title">Let's build or break something.</h2>
+    <p>Open to full-stack development work, SaaS projects, and security engagements. Reach out on whichever platform is easiest.</p>
+    <a href="mailto:iddrisusofianu284@gmail.com" class="contact-email">iddrisusofianu284@gmail.com</a>
+    <div class="social-row">
+      <a href="https://x.com/gentle_giantdev" class="social-pill" target="_blank" rel="noopener">X / Twitter</a>
+      <a href="https://linkedin.com/in/gentlegiantdev" class="social-pill" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/spearKNIGHTakis" class="social-pill" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://wa.me/qr/5AVKN43EVKMIK1" class="social-pill" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://tiktok.com/@gentle_giant_dev" class="social-pill" target="_blank" rel="noopener">TikTok</a>
+    </div>
+  </section>
+
+  <footer>© <span id="year"></span>  Gentle_Giant</footer>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
