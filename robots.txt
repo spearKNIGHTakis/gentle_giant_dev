@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://spearKNIGHTakis.github.io/Port/sitemap.xml
